@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HCXT.Lib.Interface.StandardService</name>
+    </assembly>
+    <members>
+        <member name="T:HCXT.Lib.Interface.StandardService.DelegateBusinessInvoke">
+            <summary>业务回调委托</summary>
+            <param name="args">参数数组</param>
+        </member>
+        <member name="T:HCXT.Lib.Interface.StandardService.IBusinessService">
+            <summary>
+            标准业务服务接口
+            </summary>
+        </member>
+        <member name="M:HCXT.Lib.Interface.StandardService.IBusinessService.Start">
+            <summary>
+            启动服务
+            </summary>
+        </member>
+        <member name="M:HCXT.Lib.Interface.StandardService.IBusinessService.Stop">
+            <summary>
+            停止服务
+            </summary>
+        </member>
+        <member name="P:HCXT.Lib.Interface.StandardService.IBusinessService.ServiceName">
+            <summary>
+            服务名称
+            </summary>
+        </member>
+        <member name="P:HCXT.Lib.Interface.StandardService.IBusinessService.Description">
+            <summary>
+            服务中文名称
+            </summary>
+        </member>
+        <member name="P:HCXT.Lib.Interface.StandardService.IBusinessService.TimeOut">
+            <summary>
+            业务处理超时时长（毫秒）
+            </summary>
+        </member>
+        <member name="P:HCXT.Lib.Interface.StandardService.IBusinessService.TimeSpan">
+            <summary>
+            扫描步长时间（毫秒）
+            </summary>
+        </member>
+        <member name="P:HCXT.Lib.Interface.StandardService.IBusinessService.Enabled">
+            <summary>
+            服务是否允许启用
+            </summary>
+        </member>
+        <member name="P:HCXT.Lib.Interface.StandardService.IBusinessService.IsRunning">
+            <summary>
+            服务是否允许启用
+            </summary>
+        </member>
+        <member name="P:HCXT.Lib.Interface.StandardService.IBusinessService.ServiceConfigString">
+            <summary>
+            服务配置XML串
+            </summary>
+        </member>
+        <member name="P:HCXT.Lib.Interface.StandardService.IBusinessService.OtherArgs">
+            <summary>
+            其他参数
+            </summary>
+        </member>
+        <member name="E:HCXT.Lib.Interface.StandardService.IBusinessService.BusinessInvoke">
+            <summary>
+            业务回调事件
+            </summary>
+        </member>
+    </members>
+</doc>
