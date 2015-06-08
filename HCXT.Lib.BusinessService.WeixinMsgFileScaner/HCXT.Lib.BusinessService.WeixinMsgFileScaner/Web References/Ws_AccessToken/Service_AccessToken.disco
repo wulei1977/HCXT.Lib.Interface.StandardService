@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost:8003/WebApp/Admin/Service_AccessToken.asmx?wsdl" docRef="http://localhost:8003/WebApp/Admin/Service_AccessToken.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost:8003/WebApp/Admin/Service_AccessToken.asmx" xmlns:q1="http://HCXT.Lib.WebService.WeiXinAccessToken/" binding="q1:Service_AccessTokenSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost:8003/WebApp/Admin/Service_AccessToken.asmx" xmlns:q2="http://HCXT.Lib.WebService.WeiXinAccessToken/" binding="q2:Service_AccessTokenSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

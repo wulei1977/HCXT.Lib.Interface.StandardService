@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCXT.Lib.Interface.StandardService", "HCXT.Lib.Interface.StandardService\HCXT.Lib.Interface.StandardService.csproj", "{BCC7A83C-8471-42E4-B3CA-43F00367E16C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCXT.App.StandardService", "HCXT.App.StandardService\HCXT.App.StandardService.csproj", "{2BF48823-9392-4623-9ED5-C57D1D024932}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BCC7A83C-8471-42E4-B3CA-43F00367E16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCC7A83C-8471-42E4-B3CA-43F00367E16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCC7A83C-8471-42E4-B3CA-43F00367E16C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF48823-9392-4623-9ED5-C57D1D024932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF48823-9392-4623-9ED5-C57D1D024932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF48823-9392-4623-9ED5-C57D1D024932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF48823-9392-4623-9ED5-C57D1D024932}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

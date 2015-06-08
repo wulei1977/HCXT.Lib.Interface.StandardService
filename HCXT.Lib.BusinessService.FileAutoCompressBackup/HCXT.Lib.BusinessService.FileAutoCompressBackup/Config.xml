@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <HCXT.Lib.BusinessService.FileAutoCompressBackup>
+    <ProgramName>定时自动压缩备份工具</ProgramName>
+    <Service>
+      <Name>BackupTicketSourceMessage</Name>
+      <ServiceDesc>压缩原始原子话单消息数据导入文件</ServiceDesc>
+      <ModelBatFile>BackupLogs.bat</ModelBatFile>
+      <BackupBy>Hour</BackupBy>
+      <PerUnits>1</PerUnits>
+      <SourceFolder>E:\HCXT\RealTimeAnalysis_SourceMessage\T_Meter_Analysis_SourceMessage\Succ\</SourceFolder>
+      <ObjectFolder>E:\HCXT\RealTimeAnalysis_SourceMessage\T_Meter_Analysis_SourceMessage\Succ\</ObjectFolder>
+      <SourceFileNameMask>T_Ticket_SrcMsg_%BackupBy%*.xml</SourceFileNameMask>
+      <ObjectFileNameMask>T_Ticket_SrcMsg_%BackupBy%.rar</ObjectFileNameMask>
+    </Service>
+  </HCXT.Lib.BusinessService.FileAutoCompressBackup>
+</root>

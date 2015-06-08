@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <HCXT.Lib.BusinessService.WeixinMsgFileScaner>
+    <!--服务名称-->
+    <ServiceName>HCXT.Lib.BusinessService.WeixinMsgFileScaner</ServiceName>
+    <!--服务中文名称-->
+    <Description>微信上行消息文件扫描服务</Description>
+    <!--服务是否允许启用-->
+    <Enabled>true</Enabled>
+    <!--扫描步长时间（毫秒）-->
+    <TimeSpan>2000</TimeSpan>
+    <!--上行一般消息文件目录-->
+    <PathScan>e:\ScanUpMsg</PathScan>
+    <!--上行一般消息文件处理后移往目录-->
+    <PathSucc>e:\ScanUpMsg</PathSucc>
+    <!--上行一般消息文件处理异常后移往目录-->
+    <PathError>e:\ScanUpMsg</PathError>
+    <!--上行一般消息文件筛选通配符-->
+    <FilterScan>MsgUp_*.txt</FilterScan>
+    <!--数据库连接类型(MSSQL)-->
+    <ConnType>mssql</ConnType>
+    <!--数据库连接串-->
+    <ConnString>server=(local);Initial Catalog=EC;uid=tuangou;pwd=hcxt4007</ConnString>
+
+    <!--获取公众号及AccessToken的WebService的URL-->
+    <Service_AccessToken_Url>http://localhost:8003/WebApp/Admin/Service_AccessToken.asmx</Service_AccessToken_Url>
+    <!--通讯加密私钥-->
+    <PrivateKey>1234567890123456</PrivateKey>
+
+  </HCXT.Lib.BusinessService.WeixinMsgFileScaner>
+</root>

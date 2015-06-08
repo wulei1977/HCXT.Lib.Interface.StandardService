@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <HCXT.App.StandardService>
+    <ProgramName>微信支付回调文件处理服务程序</ProgramName>
+
+    <!--服务名称列表，用半角逗号分隔-->
+    <Services>HCXT.Lib.BusinessService.WeixinReCallFileScaner</Services>
+
+  </HCXT.App.StandardService>
+
+  <HCXT.Lib.BusinessService.WeixinReCallFileScaner>
+    <!--服务名称-->
+    <ServiceName>HCXT.Lib.BusinessService.WeixinReCallFileScaner</ServiceName>
+    <!--服务中文名称-->
+    <Description>微信支付回调文件扫描服务</Description>
+    <!--服务是否允许启用-->
+    <Enabled>true</Enabled>
+    <!--扫描步长时间（毫秒）-->
+    <TimeSpan>2000</TimeSpan>
+    <!--上行支付结果回调文件目录-->
+    <PathScan>D:\log\WeiXinMessageUp</PathScan>
+    <!--上行支付结果回调文件处理后移往目录-->
+    <PathSucc>D:\log\WeiXinMessageUp\Succ</PathSucc>
+    <!--上行支付结果回调文件处理异常后移往目录-->
+    <PathError>D:\log\WeiXinMessageUp\Error</PathError>
+    <!--上行支付结果回调文件筛选通配符-->
+    <FilterScan>MsgReCall_*.txt</FilterScan>
+    <!--电渠核心地址-->
+    <ServerIp>192.168.2.13</ServerIp>
+    <!--电渠核心微信支付回调服务端口-->
+    <Port>45200</Port>
+  </HCXT.Lib.BusinessService.WeixinReCallFileScaner>
+
+</root>

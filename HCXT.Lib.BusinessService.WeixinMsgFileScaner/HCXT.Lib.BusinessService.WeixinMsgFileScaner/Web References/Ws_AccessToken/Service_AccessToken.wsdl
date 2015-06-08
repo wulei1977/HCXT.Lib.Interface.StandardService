@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://HCXT.Lib.WebService.WeiXinAccessToken/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://HCXT.Lib.WebService.WeiXinAccessToken/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://HCXT.Lib.WebService.WeiXinAccessToken/">
+      <s:element name="GetAccessToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="argType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="randStr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sign" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccessTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccessTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublicNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="argType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="randStr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sign" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublicNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPublicNoResult" type="tns:PublicNo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PublicNo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Number" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppSecret" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EncodingAESKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MchId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessToken" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccessTokenExpiresTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="JsapiTicket" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="JsapiTicketExpiresTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="OAuth20AccessToken" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OAuth20AccessTokenExpiresTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="NotifyUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TelChargeUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaNo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPublicNoList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="randStr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sign" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPublicNoListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPublicNoListResult" type="tns:ArrayOfPublicNo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPublicNo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PublicNo" nillable="true" type="tns:PublicNo" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAccessTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccessToken" />
+  </wsdl:message>
+  <wsdl:message name="GetAccessTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccessTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPublicNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPublicNo" />
+  </wsdl:message>
+  <wsdl:message name="GetPublicNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPublicNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPublicNoListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPublicNoList" />
+  </wsdl:message>
+  <wsdl:message name="GetPublicNoListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPublicNoListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service_AccessTokenSoap">
+    <wsdl:operation name="GetAccessToken">
+      <wsdl:input message="tns:GetAccessTokenSoapIn" />
+      <wsdl:output message="tns:GetAccessTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicNo">
+      <wsdl:input message="tns:GetPublicNoSoapIn" />
+      <wsdl:output message="tns:GetPublicNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicNoList">
+      <wsdl:input message="tns:GetPublicNoListSoapIn" />
+      <wsdl:output message="tns:GetPublicNoListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service_AccessTokenSoap" type="tns:Service_AccessTokenSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAccessToken">
+      <soap:operation soapAction="http://HCXT.Lib.WebService.WeiXinAccessToken/GetAccessToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicNo">
+      <soap:operation soapAction="http://HCXT.Lib.WebService.WeiXinAccessToken/GetPublicNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicNoList">
+      <soap:operation soapAction="http://HCXT.Lib.WebService.WeiXinAccessToken/GetPublicNoList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service_AccessTokenSoap12" type="tns:Service_AccessTokenSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAccessToken">
+      <soap12:operation soapAction="http://HCXT.Lib.WebService.WeiXinAccessToken/GetAccessToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicNo">
+      <soap12:operation soapAction="http://HCXT.Lib.WebService.WeiXinAccessToken/GetPublicNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPublicNoList">
+      <soap12:operation soapAction="http://HCXT.Lib.WebService.WeiXinAccessToken/GetPublicNoList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service_AccessToken">
+    <wsdl:port name="Service_AccessTokenSoap" binding="tns:Service_AccessTokenSoap">
+      <soap:address location="http://localhost:8003/WebApp/Admin/Service_AccessToken.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service_AccessTokenSoap12" binding="tns:Service_AccessTokenSoap12">
+      <soap12:address location="http://localhost:8003/WebApp/Admin/Service_AccessToken.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

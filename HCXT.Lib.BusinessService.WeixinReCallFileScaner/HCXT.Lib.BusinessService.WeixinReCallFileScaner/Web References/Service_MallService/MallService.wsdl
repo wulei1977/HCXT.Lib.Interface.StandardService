@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamBykdinfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="areacode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="casetype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="busitype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamBykdinfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeamBykdinfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamByCataId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cataid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="brandid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTeamByCataIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTeamByCataIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBrandByCataId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cataid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBrandByCataIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBrandByCataIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEBuayOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="orderstruct" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateEBuayOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateEBuayOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEBuayOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="orderstruct" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateEBuayOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateEBuayOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTeamOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="orderstruct" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateTeamOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateTeamOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeptId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="areacode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDeptIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDeptIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="areacode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telphone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="linkman" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="linkaddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="casecontent" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="casetype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="busitype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateCaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateCaseResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBusiTypeByNature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="casetype" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBusiTypeByNatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBusiTypeByNatureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWebGrid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xmlparam" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWebGridResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWebGridResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamBykdinfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeamBykdinfo" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamBykdinfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeamBykdinfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByCataIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTeamByCataId" />
+  </wsdl:message>
+  <wsdl:message name="GetTeamByCataIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTeamByCataIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBrandByCataIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBrandByCataId" />
+  </wsdl:message>
+  <wsdl:message name="GetBrandByCataIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBrandByCataIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateEBuayOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateEBuayOrder" />
+  </wsdl:message>
+  <wsdl:message name="CreateEBuayOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateEBuayOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEBuayOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateEBuayOrder" />
+  </wsdl:message>
+  <wsdl:message name="UpdateEBuayOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateEBuayOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateTeamOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateTeamOrder" />
+  </wsdl:message>
+  <wsdl:message name="CreateTeamOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateTeamOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeptIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDeptId" />
+  </wsdl:message>
+  <wsdl:message name="GetDeptIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDeptIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateCaseSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateCase" />
+  </wsdl:message>
+  <wsdl:message name="CreateCaseSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateCaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBusiTypeByNatureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBusiTypeByNature" />
+  </wsdl:message>
+  <wsdl:message name="GetBusiTypeByNatureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBusiTypeByNatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWebGridSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWebGrid" />
+  </wsdl:message>
+  <wsdl:message name="GetWebGridSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWebGridResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MallServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamBykdinfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取具体类型的项目</wsdl:documentation>
+      <wsdl:input message="tns:GetTeamBykdinfoSoapIn" />
+      <wsdl:output message="tns:GetTeamBykdinfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByCataId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询上架项目信息</wsdl:documentation>
+      <wsdl:input message="tns:GetTeamByCataIdSoapIn" />
+      <wsdl:output message="tns:GetTeamByCataIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBrandByCataId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">上架项目的品牌信息</wsdl:documentation>
+      <wsdl:input message="tns:GetBrandByCataIdSoapIn" />
+      <wsdl:output message="tns:GetBrandByCataIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEBuayOrder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">创建产品销售订单</wsdl:documentation>
+      <wsdl:input message="tns:CreateEBuayOrderSoapIn" />
+      <wsdl:output message="tns:CreateEBuayOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEBuayOrder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">产品支付成功后调用</wsdl:documentation>
+      <wsdl:input message="tns:UpdateEBuayOrderSoapIn" />
+      <wsdl:output message="tns:UpdateEBuayOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTeamOrder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">创建产品订单</wsdl:documentation>
+      <wsdl:input message="tns:CreateTeamOrderSoapIn" />
+      <wsdl:output message="tns:CreateTeamOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeptId">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">区号对应分公司ID</wsdl:documentation>
+      <wsdl:input message="tns:GetDeptIdSoapIn" />
+      <wsdl:output message="tns:GetDeptIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCase">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">创建工单</wsdl:documentation>
+      <wsdl:input message="tns:CreateCaseSoapIn" />
+      <wsdl:output message="tns:CreateCaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBusiTypeByNature">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取故障工单业务类型</wsdl:documentation>
+      <wsdl:input message="tns:GetBusiTypeByNatureSoapIn" />
+      <wsdl:output message="tns:GetBusiTypeByNatureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWebGrid">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取网格地址信息</wsdl:documentation>
+      <wsdl:input message="tns:GetWebGridSoapIn" />
+      <wsdl:output message="tns:GetWebGridSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MallServiceSoap" type="tns:MallServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamBykdinfo">
+      <soap:operation soapAction="http://tempuri.org/GetTeamBykdinfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByCataId">
+      <soap:operation soapAction="http://tempuri.org/GetTeamByCataId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBrandByCataId">
+      <soap:operation soapAction="http://tempuri.org/GetBrandByCataId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEBuayOrder">
+      <soap:operation soapAction="http://tempuri.org/CreateEBuayOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEBuayOrder">
+      <soap:operation soapAction="http://tempuri.org/UpdateEBuayOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTeamOrder">
+      <soap:operation soapAction="http://tempuri.org/CreateTeamOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeptId">
+      <soap:operation soapAction="http://tempuri.org/GetDeptId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCase">
+      <soap:operation soapAction="http://tempuri.org/CreateCase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusiTypeByNature">
+      <soap:operation soapAction="http://tempuri.org/GetBusiTypeByNature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWebGrid">
+      <soap:operation soapAction="http://tempuri.org/GetWebGrid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MallServiceSoap12" type="tns:MallServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamBykdinfo">
+      <soap12:operation soapAction="http://tempuri.org/GetTeamBykdinfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTeamByCataId">
+      <soap12:operation soapAction="http://tempuri.org/GetTeamByCataId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBrandByCataId">
+      <soap12:operation soapAction="http://tempuri.org/GetBrandByCataId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEBuayOrder">
+      <soap12:operation soapAction="http://tempuri.org/CreateEBuayOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEBuayOrder">
+      <soap12:operation soapAction="http://tempuri.org/UpdateEBuayOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTeamOrder">
+      <soap12:operation soapAction="http://tempuri.org/CreateTeamOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeptId">
+      <soap12:operation soapAction="http://tempuri.org/GetDeptId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCase">
+      <soap12:operation soapAction="http://tempuri.org/CreateCase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBusiTypeByNature">
+      <soap12:operation soapAction="http://tempuri.org/GetBusiTypeByNature" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWebGrid">
+      <soap12:operation soapAction="http://tempuri.org/GetWebGrid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MallService">
+    <wsdl:port name="MallServiceSoap" binding="tns:MallServiceSoap">
+      <soap:address location="http://gd.cttgd.com:8067/MallService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MallServiceSoap12" binding="tns:MallServiceSoap12">
+      <soap12:address location="http://gd.cttgd.com:8067/MallService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
