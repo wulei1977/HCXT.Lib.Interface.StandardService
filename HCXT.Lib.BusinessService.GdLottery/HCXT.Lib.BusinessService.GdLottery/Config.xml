@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <HCXT.Lib.BusinessService.GdLottery>
+    <!--服务名称-->
+    <ServiceName>HCXT.Lib.BusinessService.GdLottery</ServiceName>
+    <!--服务中文名称-->
+    <Description>广东电渠微信营业厅抽奖服务</Description>
+    <!--服务是否允许启用-->
+    <Enabled>true</Enabled>
+    <!--扫描步长时间（毫秒）-->
+    <TimeSpan>2000</TimeSpan>
+    <!--数据库连接类型(MSSQL)-->
+    <ConnType>informix</ConnType>
+    <!--数据库连接串-->
+    <ConnString>Database=db_tyzf;Host=192.168.2.14;Server=ol_tyzf;Service=1526;Protocol=onsoctcp;UID=informix;Password=informix;enlist=true</ConnString>
+    <!--通讯加密私钥-->
+    <PrivateKey>1234567890123456</PrivateKey>
+    
+    <!--抽奖码库接口监听绑定IP地址-->
+    <HttpListenIP_Lottery>192.168.2.12</HttpListenIP_Lottery>
+    <!--抽奖码库接口监听端口-->
+    <HttpListenPort_Lottery>55555</HttpListenPort_Lottery>
+    <!--兑奖接口监听绑定IP地址-->
+    <HttpListenIP_Verification>192.168.2.12</HttpListenIP_Verification>
+    <!--兑奖接口监听端口-->
+    <HttpListenPort_Verification>8083</HttpListenPort_Verification>
+  
+    <!--是否启用Ip安全策略-->
+    <IpSecurityPolicy_Enabled>true</IpSecurityPolicy_Enabled>
+    <!--白名单IP地址列表，用半角逗号分隔-->
+    <IpSecurityPolicy_IpList>192.168.2.11,192.168.2.12,192.168.2.13,182.254.228.237,119.29.22.232</IpSecurityPolicy_IpList>
+
+    <!--电渠核心程序IP地址-->
+    <EProxy_Ip>192.168.2.12</EProxy_Ip>
+    <!--电渠核心程序监听端口-->
+    <EProxy_Port>45800</EProxy_Port>
+
+    <!--短信模版-->
+    <SmsTemplate>尊敬客户，祝贺你获得铁通优惠券一张,卡号：$c_C_Num$ 卡密：$c_C_Pwd$ 你可以使用此卡在广东铁通网上营业厅gd.10050.net上进行宽带续费。有效期至$c_useendtime$。</SmsTemplate>
+
+    <!--默认批次-->
+    <DefaultBatch>20150706</DefaultBatch>
+  </HCXT.Lib.BusinessService.GdLottery>
+</root>

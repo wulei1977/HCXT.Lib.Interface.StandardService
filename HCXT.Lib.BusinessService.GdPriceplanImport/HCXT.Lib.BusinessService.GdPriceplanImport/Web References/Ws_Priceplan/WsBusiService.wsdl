@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:tns="http://external.upp.huatech.com" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" targetNamespace="http://external.upp.huatech.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://external.upp.huatech.com">
+      <xsd:element name="busiOper">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="busiOperResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="busiOperRequest">
+    <wsdl:part name="parameters" element="tns:busiOper" />
+  </wsdl:message>
+  <wsdl:message name="busiOperResponse">
+    <wsdl:part name="parameters" element="tns:busiOperResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WsBusiServicePortType">
+    <wsdl:operation name="busiOper">
+      <wsdl:input name="busiOperRequest" message="tns:busiOperRequest" />
+      <wsdl:output name="busiOperResponse" message="tns:busiOperResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsBusiServiceHttpBinding" type="tns:WsBusiServicePortType">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="busiOper">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="busiOperRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="busiOperResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsBusiService">
+    <wsdl:port name="WsBusiServiceHttpPort" binding="tns:WsBusiServiceHttpBinding">
+      <wsdlsoap:address location="http://10.64.0.69:8080/TUIS/TUIS/WsBusiService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <HCXT.Lib.BusinessService.GdPriceplanImport>
+    <!--服务名称-->
+    <ServiceName>HCXT.Lib.BusinessService.GdPriceplanImport</ServiceName>
+    <!--服务中文名称-->
+    <Description>广东电渠导入价格计划服务</Description>
+    <!--服务是否允许启用-->
+    <Enabled>true</Enabled>
+    <!--扫描步长时间（毫秒）-->
+    <TimeSpan>3000000</TimeSpan>
+    <!--数据库连接类型(MSSQL)-->
+    <ConnType>informix</ConnType>
+    <!--数据库连接串-->
+    <ConnString>Database=db_tyzf;Host=192.168.2.14;Server=ol_tyzf;Service=1526;Protocol=onsoctcp;UID=informix;Password=informix;enlist=true</ConnString>
+    <!--通讯加密私钥-->
+    <PrivateKey>Huatech&amp;gdttuis9902</PrivateKey>
+    <!--WebService地址URL-->
+    <Ws_PriceImport_Url>http://10.64.0.69:8080/TUIS/TUIS/WsBusiService</Ws_PriceImport_Url>
+
+    <!--是否将每次通过接口取得的数据存为文件-->
+    <EnableSavePriceplanFile>true</EnableSavePriceplanFile>
+    
+    <!--WebService请求的参数配置：请求方系统-->
+    <WsArg_callerSystem>9902</WsArg_callerSystem>
+    <!--WebService请求的参数配置：省份ID-->
+    <WsArg_provinceId>44</WsArg_provinceId>
+    <!--WebService请求的参数配置：业务类型 2固话，1宽带  华泰目前都是使用1 部分2或 1-->
+    <WsArg_businessType>1</WsArg_businessType>
+    <!--WebService请求的参数配置：业务代码:获取价格计划编码 Q020-->
+    <WsArg_businessCode>Q020</WsArg_businessCode>
+    <!--WebService请求的参数配置：版本-->
+    <WsArg_version>1.00</WsArg_version>
+    
+    <!--删除旧的导入批次数据时的条件偏移量(例如：10表示删除所有批次号小于当前批次号减10的批次数据)-->
+    <DeleteOldBatch_Offset>10</DeleteOldBatch_Offset>
+    
+    <!--默认的到期时间-->
+    <Default_ExpDate>2100-01-01 00:00:00</Default_ExpDate>
+    
+    <!-- 扫描模式(StepTimeSpan/TimePointList) -->
+    <ScanMode>TimePointList</ScanMode>
+    <!-- 按指定时间点扫描 -->
+    <TimePointList>
+      <TimePoint>04:00:00</TimePoint>
+      <TimePoint>09:00:00</TimePoint>
+      <TimePoint>10:00:00</TimePoint>
+      <TimePoint>11:00:00</TimePoint>
+      <TimePoint>12:00:00</TimePoint>
+      <TimePoint>14:00:00</TimePoint>
+      <TimePoint>15:00:00</TimePoint>
+      <TimePoint>16:00:00</TimePoint>
+      <TimePoint>17:00:00</TimePoint>
+      <TimePoint>18:00:00</TimePoint>
+      <TimePoint>21:00:00</TimePoint>
+    </TimePointList>
+      
+    <!--建立临时表SQL模版-->
+    <Sql_Create>
+      create table temp_priceimport  (
+      id                   SERIAL                          not null,
+      batch_id             INTEGER                         not null,
+      import_time          DATETIME YEAR TO SECOND,
+      priceplan_id         INTEGER                         not null,
+      comp_id              VARCHAR(10)                     not null,
+      priceplan_name       VARCHAR(250)                    not null,
+      service_id           INTEGER                         not null,
+      service_name         VARCHAR(80)                     not null,
+      service_name_type    VARCHAR(20),
+      servtype_id          VARCHAR(10),
+      delay_type           VARCHAR(3)                      not null,
+      delay_value          INTEGER                         not null,
+      price                INTEGER                         not null,
+      prodtype_id          VARCHAR(6)                      not null,
+      expdate              DATETIME YEAR TO SECOND,
+      import_state         INTEGER,
+      ext1                 VARCHAR(250),
+      ext2                 VARCHAR(250),
+      primary key (id) constraint PK_temp_PRICE
+      )
+    </Sql_Create>
+    <!--删除临时表SQL模版-->
+    <Sql_Drop>
+      drop table temp_priceimport
+    </Sql_Drop>
+    <!--从临时表插入正式表的SQL模版-->
+    <Sql_Import>
+      INSERT INTO e_priceplan_import(
+      batch_id,import_time,priceplan_id,comp_id,priceplan_name,service_id,service_name,service_name_type,servtype_id,delay_type,delay_value,price,prodtype_id,expdate,import_state,ext1,ext2
+      )SELECT
+      batch_id,import_time,priceplan_id,comp_id,priceplan_name,service_id,service_name,service_name_type,servtype_id,delay_type,delay_value,price,prodtype_id,expdate,import_state,ext1,ext2
+      FROM temp_priceimport
+    </Sql_Import>
+    <!--获取最新批次号语句（取表[e_priceplan_import]中的最大batch_id再加-->
+    <Sql_GetBatchId>SELECT CASE WHEN MAX(batch_id) IS NULL THEN 1 ELSE MAX(batch_id)+1 END batch_id FROM e_priceplan_import</Sql_GetBatchId>
+  </HCXT.Lib.BusinessService.GdPriceplanImport>
+</root>
