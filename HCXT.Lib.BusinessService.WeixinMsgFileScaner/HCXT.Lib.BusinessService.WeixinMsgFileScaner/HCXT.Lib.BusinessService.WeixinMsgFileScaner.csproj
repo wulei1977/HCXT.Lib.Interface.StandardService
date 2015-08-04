@@ -90,6 +90,7 @@
     <None Include="Web References\Ws_AccessToken\Service_AccessToken.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App.ico" />
     <Content Include="Config.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
