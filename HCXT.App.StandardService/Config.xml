@@ -2,7 +2,10 @@
 <root>
   <HCXT.App.StandardService>
     <ProgramName>微信支付回调文件处理服务程序</ProgramName>
-
+    <!--默认窗体图标文件名-->
+    <Icon>Test.ico</Icon>
+    <!--是否进程互斥（以窗体名称为判断依据）-->
+    <Alone>Yes</Alone>
     <!--服务名称列表，用半角逗号分隔-->
     <Services>HCXT.Lib.BusinessService.WeixinReCallFileScaner</Services>
 

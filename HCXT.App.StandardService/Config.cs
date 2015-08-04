@@ -309,11 +309,19 @@ namespace HCXT.App.StandardService
         private const string DefaultProgramname = "标准服务程序";
         /// <summary>XML配置节：应用程序名称</summary>
         private const string PathProgramname = "//root/HCXT.App.StandardService/ProgramName";
+        /// <summary>XML配置节：默认窗体图标文件名</summary>
+        private const string PathIcon = "//root/HCXT.App.StandardService/Icon";
+        /// <summary>XML配置节：是否进程互斥（以窗体名称为判断依据）</summary>
+        private const string PathAlone = "//root/HCXT.App.StandardService/Alone";
         #endregion
 
         #region 私有成员变量
         /// <summary>应用程序名称</summary>
         private static string _programName;
+        /// <summary>默认窗体图标文件名</summary>
+        private static string _icon;
+        /// <summary>是否进程互斥（以窗体名称为判断依据）</summary>
+        private static bool _alone;
         #endregion
 
         #region 属性
@@ -325,6 +333,26 @@ namespace HCXT.App.StandardService
                 if (string.IsNullOrEmpty(_programName))
                     _programName = GetStringlValueFromDom(PathProgramname, DefaultProgramname);
                 return _programName;
+            }
+        }
+        /// <summary>默认窗体图标文件名</summary>
+        public static string Icon
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_icon))
+                    _icon = GetStringlValueFromDom(PathIcon, "App.ico");
+                return _icon;
+            }
+        }
+        /// <summary>是否进程互斥（以窗体名称为判断依据）</summary>
+        public static bool Alone
+        {
+            get
+            {
+                var s = GetStringlValueFromDom(PathAlone, "False");
+                _alone = ConfigValue2Bool(s);
+                return _alone;
             }
         }
         #endregion

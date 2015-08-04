@@ -27,10 +27,29 @@ namespace HCXT.App.StandardService
             // 控制台输出 开始运行信息
             Config.Cow(string.Format("[{0}][Ver {1}]开始运行。", Config.ProgramName, Config.Version));
 
+            // 控制台窗体标题
+            var strTitle = string.Format("{0} Ver {1}", Config.ProgramName, Config.Version);
+
+            if (Config.Alone && ConsoleWin32Helper.IsExistsConsole(strTitle))
+            {
+                Config.Cow(string.Format("[{0}]存有同名窗体在运行中！本程序将退出！[{1}]", Config.ProgramName, strTitle));
+                return;
+            }
+
             // 设置控制台窗体标题
-            Console.Title = string.Format("{0} Ver {1}", Config.ProgramName, Config.Version);
+            Console.Title = strTitle;
 
             Config.Cow("Info", string.Format("当前进程PID：{0}", Config.PId));
+
+            // 屏蔽关闭按钮
+            ConsoleWin32Helper.DisableCloseButton(Console.Title);
+
+            // 设置窗体图标
+            if (System.IO.File.Exists(Config.Icon))
+            {
+                var intPtr = ConsoleWin32Helper.FindWindow(null, Console.Title);
+                ModifyWindowIcon.SetIcon(intPtr.ToInt32(), Config.Icon, true);
+            }
 
             var serviceList = new List<IBusinessService>();
 

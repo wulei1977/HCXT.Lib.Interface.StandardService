@@ -32,10 +32,17 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: 
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.1")]
-[assembly: AssemblyFileVersion("1.2015.0325.0025")]
+[assembly: AssemblyVersion("1.0.0.2")]
+[assembly: AssemblyFileVersion("1.2015.0803.1230")]
 
 // 更新历史：
+// 
+// 2015-08-03
+// 版 本 号：1.0.0.2
+// 文件版本：1.2015.0803.1230
+// 更新内容：增加自动屏蔽关闭按钮功能类[ConsoleWin32Helper]
+//           增加动态设置窗体图标功能类[ModifyWindowIcon]
+//           增加进程互斥功能。
 // 
 // 2015-03-25
 // 版 本 号：1.0.0.1
