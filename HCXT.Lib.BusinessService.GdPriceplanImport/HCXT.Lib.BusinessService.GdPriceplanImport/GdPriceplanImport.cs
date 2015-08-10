@@ -227,13 +227,6 @@ namespace HCXT.Lib.BusinessService.GdPriceplanImport
                     TimePointList = new List<string>();
                     foreach (XmlNode xn in xnl)
                         TimePointList.Add(xn.InnerText);
-
-                    Thread.Sleep(10);
-
-                    // 初始化数据库链接器
-                    _dbc = new DBConnection { ConnectionType = ConnType, ConnectionString = ConnString };
-                    _dbc.OnLog += Log;
-                    Cow("Debug", string.Format("{0}初始化数据库链接器完成。[ConnectionType={1}][ConnectionString={2}]", logHead, ConnType, ConnString));
                 }
                 catch (Exception err)
                 {
@@ -293,7 +286,6 @@ namespace HCXT.Lib.BusinessService.GdPriceplanImport
         #endregion
 
         #region 业务代码块
-        private DBConnection _dbc;
         private long _pc;
         /// <summary>服务线程对象</summary>
         private Thread _thread;
@@ -328,6 +320,13 @@ namespace HCXT.Lib.BusinessService.GdPriceplanImport
 
                 _pc++;
                 Cow("Info", string.Format("{0}服务线程第[{1}]轮扫描开始。", logHead, _pc));
+                // 初始化数据库链接器
+                var _dbc = new DBConnection { ConnectionType = ConnType, ConnectionString = ConnString };
+                _dbc.OnLog += Log;
+                Cow("Debug", string.Format("{0}初始化数据库链接器完成。[ConnectionType={1}][ConnectionString={2}]", logHead, ConnType, ConnString));
+                // WebService初始化
+                var ws = new WsBusiService { Url = Ws_PriceImport_Url };
+                Cow("Debug", string.Format("{0}WebService初始化完成。[Url={1}]", logHead, ws.Url));
                 try
                 {
                     // 获取最新批次号（取表[e_priceplan_import]中的最大batch_id再加一）
@@ -339,10 +338,7 @@ namespace HCXT.Lib.BusinessService.GdPriceplanImport
                     string md5; // 校验码
                     var requestStr = GetRequestString(out md5); // 请求串
                     Log("Info", string.Format("{0}即将调用WebService。请求参数串：[{1}]MD5串：[{2}]", logHead, requestStr, md5));
-                    // WebService初始化
-                    var ws = new WsBusiService { Url = Ws_PriceImport_Url };
                     var responseStr = ws.busiOper(requestStr, md5); // 同步调用WebService，并得到返回值
-                    ws.Dispose();
 
                     // 将每次通过接口取得的数据存为文件
                     SavePriceplanFile(responseStr);
@@ -354,7 +350,7 @@ namespace HCXT.Lib.BusinessService.GdPriceplanImport
                     var recordCount = GetRecordCount(dom);
 
                     // 先判断临时表是否存在，如果临时表存在，先drop掉临时表
-                    if (ExistTable("temp_priceimport",_dbc))
+                    if (ExistTable("temp_priceimport", _dbc))
                         _dbc.ExecuteSQL(Sql_Drop);
                     // 创建临时表
                     _dbc.ExecuteSQL(Sql_Create);
@@ -372,7 +368,9 @@ namespace HCXT.Lib.BusinessService.GdPriceplanImport
                     var recordCountTemp = GetRecordCount(batch_id, _dbc);
                     if (recordCount != recordCountTemp)
                     {
-                        Cow("Info", string.Format("{0}接口得到数据[{1}]条，成功插入临时表[{2}]条，数据记录数不符，本次操作失败！", logHead, recordCount, recordCountTemp));
+                        Cow("Info",
+                            string.Format("{0}接口得到数据[{1}]条，成功插入临时表[{2}]条，数据记录数不符，本次操作失败！", logHead, recordCount,
+                                recordCountTemp));
                         continue;
                     }
 
@@ -384,7 +382,12 @@ namespace HCXT.Lib.BusinessService.GdPriceplanImport
                 }
                 catch (Exception err)
                 {
-                    Cow("Info", string.Format("{0}发生异常。异常信息：{1}\r\n堆栈：{2}", logHead, err.Message, err.StackTrace));
+                    Cow("Error", string.Format("{0}发生异常。异常信息：{1}\r\n堆栈：{2}", logHead, err.Message, err.StackTrace));
+                }
+                finally
+                {
+                    _dbc.OnLog -= Log;
+                    ws.Dispose();
                 }
 
                 // 如果是时间点模式，这里sleep1秒即可
@@ -634,16 +637,23 @@ namespace HCXT.Lib.BusinessService.GdPriceplanImport
             long pc = 0;
             while (_isRunningGc)
             {
-                Thread.Sleep(1000 * 600);
-                GC.Collect(GC.MaxGeneration);
-                GC.WaitForPendingFinalizers();
-                Log("Info", string.Format("{0}定时回收内存垃圾线程第[{1}]次回收内存垃圾完毕。", logHead, ++pc));
-                //if (Config.DbQueryExceptionCount > Config.MaxDbQueryExceptionCount)
-                //{
-                //    _isRunningGc = false;
-                //    _isRunning = false;
-                //    Config.CowLog(string.Format("[Program.GcThreadMethod] 数据库查询异常次数[{0}]已超过最大设定值[{1}]，应用程序即将退出。", Config.DbQueryExceptionCount, Config.MaxDbQueryExceptionCount));
-                //}
+                try
+                {
+                    Thread.Sleep(1000 * 600);
+                    GC.Collect(GC.MaxGeneration);
+                    GC.WaitForPendingFinalizers();
+                    Log("Info", string.Format("{0}定时回收内存垃圾线程第[{1}]次回收内存垃圾完毕。", logHead, ++pc));
+                    //if (Config.DbQueryExceptionCount > Config.MaxDbQueryExceptionCount)
+                    //{
+                    //    _isRunningGc = false;
+                    //    _isRunning = false;
+                    //    Config.CowLog(string.Format("[Program.GcThreadMethod] 数据库查询异常次数[{0}]已超过最大设定值[{1}]，应用程序即将退出。", Config.DbQueryExceptionCount, Config.MaxDbQueryExceptionCount));
+                    //}
+                }
+                catch (Exception err)
+                {
+                    Log("Error", string.Format("{0}定时回收内存垃圾线程发生异常。异常信息：{1}", logHead, err.Message));
+                }
             }
         }
         #endregion

@@ -32,10 +32,15 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: 
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.3")]
-[assembly: AssemblyFileVersion("1.2015.0728.1140")]
+[assembly: AssemblyVersion("1.0.0.4")]
+[assembly: AssemblyFileVersion("1.2015.0810.1759")]
 
 // 更新历史：
+// 
+// 2015-08-10
+// 版 本 号：1.0.0.4
+// 文件版本：1.2015.0810.1759
+// 更新内容：发现内存占用仍然不受控地持续增加。修改DBConnection对象的作用域，改为在扫描循环中声明并在finally中销毁。WebService也改为在finally中销毁处理。
 // 
 // 2015-07-28
 // 版 本 号：1.0.0.3
