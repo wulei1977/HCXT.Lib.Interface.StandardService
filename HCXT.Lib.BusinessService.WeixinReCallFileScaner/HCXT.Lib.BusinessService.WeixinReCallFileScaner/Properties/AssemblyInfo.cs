@@ -32,10 +32,15 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: 
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.3")]
-[assembly: AssemblyFileVersion("1.2015.0513.1550")]
+[assembly: AssemblyVersion("1.0.0.4")]
+[assembly: AssemblyFileVersion("1.2015.0810.1840")]
 
 // 更新历史：
+// 
+// 2015-08-10
+// 版 本 号：1.0.0.4
+// 文件版本：1.2015.0810.1840
+// 更新内容：由于支付回调在销账时经常出现超时，检查代码发现调用核心Socket时超时时长是写死的30秒(30000)。因此在配置文件增加一个[TimeOut]节点，用于配置调用电渠核心Socket超时时长（毫秒）。
 // 
 // 2015-05-13
 // 版 本 号：1.0.0.3

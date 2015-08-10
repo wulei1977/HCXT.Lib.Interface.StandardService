@@ -22,6 +22,9 @@
     <!--电渠核心微信支付回调服务端口-->
     <Port>45200</Port>
 
+    <!--调用电渠核心Socket超时时长（毫秒）-->
+    <TimeOut>60000</TimeOut>
+
     <!--API密钥 Key-->
     <Key>12a59cebdac7521561cc8ca00822e079</Key>
 

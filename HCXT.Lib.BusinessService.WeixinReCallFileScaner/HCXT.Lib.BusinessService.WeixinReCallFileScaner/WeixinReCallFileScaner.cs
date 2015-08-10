@@ -21,7 +21,7 @@ namespace HCXT.Lib.BusinessService.WeixinReCallFileScaner
         #region 实现接口IBusinessService
         private string _serviceName;
         private string _description;
-        private int _timeOut;
+        private int _timeOut = 60000;
         private int _timeSpan;
         private bool _enabled;
         private bool _isRunning;
@@ -128,7 +128,7 @@ namespace HCXT.Lib.BusinessService.WeixinReCallFileScaner
                     var dom = new XmlDocument();
                     dom.LoadXml(value);
                     const string sRoot = "//HCXT.Lib.BusinessService.WeixinReCallFileScaner/";
-                    var arrName = new[] { "ServiceName", "Description", "Enabled", "TimeSpan", "PathScan", "PathSucc", "PathError", "FilterScan", "ServerIp", "Port", "Key", "Service_MallService_Url" };
+                    var arrName = new[] { "ServiceName", "Description", "Enabled", "TimeSpan", "PathScan", "PathSucc", "PathError", "FilterScan", "ServerIp", "Port", "TimeOut", "Key", "Service_MallService_Url" };
                     foreach (var pName in arrName)
                     {
                         var node = dom.SelectSingleNode(sRoot + pName);
@@ -337,7 +337,12 @@ namespace HCXT.Lib.BusinessService.WeixinReCallFileScaner
                                 xml.Append("</Service></Proxy>");
 
                                 string result;
-                                var tcpQueryer = new TcpQueryer { ServerIP = ServerIp, ServerPort = Port };
+                                var tcpQueryer = new TcpQueryer
+                                {
+                                    ServerIP = ServerIp,
+                                    ServerPort = Port,
+                                    TimeOut = TimeOut
+                                };
                                 tcpQueryer.OnLog += tcpQueryer_OnLog;
                                 var resultLen = tcpQueryer.Query(xml.ToString(), out result);
                                 if (resultLen <= 0)
